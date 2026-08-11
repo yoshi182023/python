@@ -1,0 +1,10 @@
+S4 — RAG Data Pipeline 
+1. Why RAG? The Problem It Solves 
+1.1 The three problems LLMs can't solve alone 
+Problem 1 — Training cutoff. Even Claude Opus 4.7 and o4-mini have a cutoff date. Anything that happened after that — new product launches, today's weather, last week's earnings — the model simply does not know. You cannot retrain a 405B model every time TripAdvisor adds a new restaurant. 
+Problem 2 — Private/proprietary knowledge. A travel-agency LLM cannot know your company's preferred-vendor list, internal pricing rules, or the contents of your customer database. None of that data was in any pre-training corpus. None ever will be. 
+Problem 3 — Hallucination on long-tail facts. LLMs are excellent at common patterns and surprisingly weak at obscure specifics. Ask GPT-4o for the opening hours of a niche soba restaurant in Kyoto and you'll get a confidently wrong answer. The model has no grounding source — it generates plausible text. 
+1.2 What RAG is, in one diagram 
+Retrieval-Augmented Generation is the architecture pattern where, at query time, you (1) search a knowledge base for the most relevant chunks, (2) inject those chunks into the prompt as context, and (3) let the LLM synthesize the final answer grounded in that retrieved text. 
+Data → Parsing → Chunking → Embedding → Indexing → Retrieval → 
+Generation 
